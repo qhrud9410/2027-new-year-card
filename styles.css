@@ -1075,6 +1075,6 @@ button {
 .closing__stat-value {
   font-weight: 500;
   font-synthesis: none;
-  -webkit-text-stroke: 0.045em currentColor;
+  -webkit-text-stroke: 0.0225em currentColor;
   paint-order: stroke fill;
 }
