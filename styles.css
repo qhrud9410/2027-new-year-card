@@ -1,7 +1,7 @@
 @font-face {
   font-family: "KoPub Batang Pro";
   src: url("fonts/KoPubBatangPro-Medium.otf") format("opentype");
-  font-weight: 300 700;
+  font-weight: 500;
   font-style: normal;
   font-display: swap;
   ascent-override: 85%;
@@ -40,6 +40,7 @@ body {
   color: #292153;
   font-family: "KoPub Batang Pro", "Batang", serif;
   font-weight: 500;
+  font-synthesis: weight;
 }
 
 button {
@@ -1063,4 +1064,17 @@ button {
   height: auto;
   transform: translateX(-50%);
   pointer-events: none;
+}
+
+.story__copy strong,
+.thanks__copy strong,
+.ambassador__copy strong,
+.closing__copy strong,
+.closing__title,
+.closing__stat-label,
+.closing__stat-value {
+  font-weight: 500;
+  font-synthesis: none;
+  -webkit-text-stroke: 0.045em currentColor;
+  paint-order: stroke fill;
 }
