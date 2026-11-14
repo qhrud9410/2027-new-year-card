@@ -73,6 +73,53 @@ button {
   display: none;
 }
 
+#music-button {
+  position: fixed;
+  z-index: 30;
+  top: 2.4dvh;
+  right: max(1.45rem, calc((100vw - min(100vw, 100dvh * 1000 / 1800)) / 2 + 1.45rem));
+  width: 2.65rem;
+  height: 2.65rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #6c61a6;
+  cursor: pointer;
+}
+
+.music-icon {
+  display: block;
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.music-icon--on {
+  display: none;
+}
+
+#music-button[aria-pressed="true"] .music-icon--off {
+  display: none;
+}
+
+#music-button[aria-pressed="true"] .music-icon--on {
+  display: block;
+}
+
+#music-status {
+  position: fixed;
+  z-index: 30;
+  top: 5.6dvh;
+  right: max(1.45rem, calc((100vw - min(100vw, 100dvh * 1000 / 1800)) / 2 + 1.45rem));
+  margin: 0;
+  color: #483d82;
+  font-size: 0.72rem;
+}
+
 .card {
   position: relative;
   flex: 0 0 100%;

@@ -552,6 +552,21 @@
       </nav>
     </section>
     </div>
+    <audio id="card-music" src="bgm.mp3" preload="none" loop></audio>
+    <button type="button" id="music-button" aria-pressed="false" aria-label="음악 켜기">
+      <svg class="music-icon music-icon--off" viewBox="0 0 64 64" aria-hidden="true">
+        <circle cx="32" cy="32" r="30" />
+        <path d="M23.5 27.2h4.4L34.2 21.5v21L27.9 36.8h-4.4a1.2 1.2 0 0 1-1.2-1.2v-7.2a1.2 1.2 0 0 1 1.2-1.2z" />
+        <path d="M40.2 28.2 47 35M47 28.2l-6.8 6.8" />
+      </svg>
+      <svg class="music-icon music-icon--on" viewBox="0 0 64 64" aria-hidden="true">
+        <circle cx="32" cy="32" r="30" />
+        <path d="M21.5 27.2h4.4L32.2 21.5v21L25.9 36.8h-4.4a1.2 1.2 0 0 1-1.2-1.2v-7.2a1.2 1.2 0 0 1 1.2-1.2z" />
+        <path d="M37.2 27c1.7 1.4 2.6 3 2.6 5s-.9 3.6-2.6 5" />
+        <path d="M41.6 23.2c2.8 2.2 4.2 4.8 4.2 8.8s-1.4 6.6-4.2 8.8" />
+      </svg>
+    </button>
+    <p id="music-status" role="status" hidden></p>
     <script>
       const prepareTyping = (lines, { start, step, pause }) => {
         let typedAt = start;
@@ -765,6 +780,39 @@
         deck.addEventListener("pointerup", finishDrag);
         deck.addEventListener("pointercancel", finishDrag);
       }
+
+      const music = document.querySelector("#card-music");
+      const button = document.querySelector("#music-button");
+      const status = document.querySelector("#music-status");
+
+      button.addEventListener("click", async () => {
+        if (!music.paused) {
+          music.pause();
+          return;
+        }
+
+        status.hidden = true;
+        try {
+          await music.play();
+        } catch {
+          status.textContent = "음악을 재생할 수 없어요.";
+          status.hidden = false;
+        }
+      });
+
+      const setMusicButton = (playing) => {
+        button.setAttribute("aria-pressed", playing ? "true" : "false");
+        button.setAttribute("aria-label", playing ? "음악 끄기" : "음악 켜기");
+      };
+
+      music.addEventListener("playing", () => setMusicButton(true));
+
+      function resetButton() {
+        setMusicButton(false);
+      }
+
+      music.addEventListener("pause", resetButton);
+      music.addEventListener("ended", resetButton);
     </script>
   </body>
 </html>
