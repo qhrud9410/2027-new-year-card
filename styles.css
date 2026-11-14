@@ -1,9 +1,12 @@
 @font-face {
   font-family: "KoPub Batang Pro";
   src: url("fonts/KoPubBatangPro-Medium.otf") format("opentype");
-  font-weight: 500;
+  font-weight: 300 700;
   font-style: normal;
   font-display: swap;
+  ascent-override: 85%;
+  descent-override: 25%;
+  line-gap-override: 0%;
 }
 
 @font-face {
@@ -25,6 +28,8 @@ body {
   margin: 0;
   height: 100%;
   background: #ffffff;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -382,7 +387,8 @@ button {
   left: 8.8%;
   z-index: 1;
   width: 80.8cqw;
-  height: auto;
+  height: 24.697cqw;
+  aspect-ratio: 808 / 247;
   pointer-events: none;
 }
 
@@ -554,7 +560,8 @@ button {
   left: 8.8%;
   z-index: 1;
   width: 80.8cqw;
-  height: auto;
+  height: 24.697cqw;
+  aspect-ratio: 808 / 247;
   pointer-events: none;
 }
 
@@ -647,7 +654,8 @@ button {
   left: 8.8%;
   z-index: 1;
   width: 80.8cqw;
-  height: auto;
+  height: 24.697cqw;
+  aspect-ratio: 808 / 247;
   pointer-events: none;
 }
 
@@ -929,13 +937,13 @@ button {
 .closing__title {
   position: absolute;
   top: 23.722222%;
-  left: 30.4%;
+  left: 50%;
   z-index: 5;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.4cqw;
-  width: 39.2cqw;
+  width: max-content;
   margin: 0;
   color: #292153;
   font-size: 5cqw;
@@ -944,10 +952,12 @@ button {
   letter-spacing: -0.15cqw;
   text-align: center;
   text-transform: uppercase;
+  transform: translateX(-50%);
 }
 
 .closing__title p {
   margin: 0;
+  white-space: nowrap;
 }
 
 .closing__heart {
@@ -1019,7 +1029,8 @@ button {
   left: 8.8%;
   z-index: 1;
   width: 80.8cqw;
-  height: auto;
+  height: 24.697cqw;
+  aspect-ratio: 808 / 247;
   pointer-events: none;
 }
 
