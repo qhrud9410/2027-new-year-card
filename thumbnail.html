@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>2027 Happy New Year</title>
+    <style>
+      @font-face {
+        font-family: "KoPub Batang Pro";
+        src: url("fonts/KoPubBatangPro-Medium.otf") format("opentype");
+        font-weight: 500;
+        font-style: normal;
+        font-display: block;
+      }
+
+      @font-face {
+        font-family: "Bitcount Prop Single";
+        src: url("fonts/BitcountPropSingle-Regular.woff2") format("woff2");
+        font-weight: 400;
+        font-style: normal;
+        font-display: block;
+      }
+
+      html,
+      body {
+        margin: 0;
+        width: 800px;
+        height: 400px;
+        overflow: hidden;
+        background: #ffffff;
+      }
+
+      .thumb {
+        position: relative;
+        width: 800px;
+        height: 400px;
+        overflow: hidden;
+        background: #ffffff;
+      }
+
+      .thumb__bg {
+        position: absolute;
+        left: -126px;
+        top: -472px;
+        width: 1053px;
+        height: 1871px;
+        object-fit: cover;
+      }
+
+      .thumb__copy {
+        position: absolute;
+        top: 81px;
+        left: 68px;
+        width: 684px;
+        margin: 0;
+        color: #292153;
+        text-align: center;
+        text-transform: uppercase;
+      }
+
+      .thumb__year,
+      .thumb__title,
+      .thumb__tagline {
+        display: block;
+        margin: 0;
+      }
+
+      .thumb__year,
+      .thumb__title {
+        font-family: "Bitcount Prop Single", sans-serif;
+        font-weight: 400;
+        font-variation-settings: "CRSV" 0, "ELSH" 0, "ELXP" 0;
+      }
+
+      .thumb__year {
+        font-size: 52.094px;
+        line-height: 63px;
+      }
+
+      .thumb__title {
+        margin-top: 6px;
+        font-size: 74.308px;
+        line-height: 0.96;
+      }
+
+      .thumb__tagline {
+        margin-top: 6px;
+        font-family: "KoPub Batang Pro", serif;
+        font-size: 42px;
+        font-weight: 500;
+        font-synthesis: none;
+        line-height: 58px;
+        letter-spacing: -1.68px;
+        -webkit-text-stroke: 0.0225em currentColor;
+        paint-order: stroke fill;
+      }
+
+      .thumb__logo {
+        position: absolute;
+        top: 324.304px;
+        left: 50%;
+        width: 216px;
+        height: 45.391px;
+        transform: translateX(-50%);
+      }
+
+      .thumb__star {
+        position: absolute;
+        left: 180.449px;
+        top: 114.951px;
+        width: 52.6px;
+        height: 58.6px;
+        transform: translate(-50%, -50%) rotate(134.83deg);
+      }
+
+      .thumb__dot {
+        position: absolute;
+        left: 537px;
+        top: 34px;
+        width: 29px;
+        height: 29px;
+      }
+
+      .thumb__heart {
+        position: absolute;
+        left: 720.583px;
+        top: 281.629px;
+        width: 35.9534px;
+        height: 34.724px;
+        transform: translate(-50%, -50%) rotate(25.16deg);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="thumb">
+      <img class="thumb__bg" src="assets/card.jpg" alt="" width="1053" height="1871" />
+      <p class="thumb__copy">
+        <span class="thumb__year">2027</span>
+        <span class="thumb__title">Happy New Year</span>
+        <span class="thumb__tagline">소아암 어린이와 함께합니다</span>
+      </p>
+      <img class="thumb__star" src="assets/thumb-star.svg" alt="" width="52.6" height="58.6" />
+      <img class="thumb__dot" src="assets/thumb-dot.svg" alt="" width="29" height="29" />
+      <img class="thumb__heart" src="assets/thumb-heart.svg" alt="" width="35.9534" height="34.724" />
+      <img class="thumb__logo" src="assets/thumb-logo.svg" alt="한국백혈병어린이재단" width="216" height="45.391" />
+    </div>
+  </body>
+</html>
