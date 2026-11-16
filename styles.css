@@ -1703,6 +1703,10 @@ button {
     transition: opacity 1.2s ease;
     transition-delay: 1.55s;
   }
+
+  .closing.is-armed.is-open .closing__stats {
+    transition-delay: 2.9s;
+  }
 }
 
 .story__copy strong,
