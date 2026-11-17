@@ -20,12 +20,12 @@
   <body>
     <div class="deck">
     <main class="card cover-stage" data-node-id="33:51" data-name="main_1">
-      <div class="card__art" data-node-id="33:1020" data-name="눈 덮인 숲의 아이들과 눈사람 1">
+      <div class="card__art" data-node-id="43:16" data-name="눈밭의 초록 엄마와 파란 모자 아이 1">
         <img
           src="assets/card-main.png"
           alt=""
-          width="1501"
-          height="2585"
+          width="1000"
+          height="1800"
         />
       </div>
       <div class="cover-glow" data-node-id="33:92"></div>
@@ -58,6 +58,31 @@
         height="58"
         data-node-id="33:61"
       />
+
+      <div class="swipe-hint" role="status" data-node-id="45:39">
+        <div class="swipe-hint__hand" data-node-id="45:49">
+          <div class="swipe-hint__hand-rot">
+            <img src="assets/swipe-hand.svg" alt="" width="185.5" height="217.479" />
+          </div>
+        </div>
+        <img
+          class="swipe-hint__arrow swipe-hint__arrow--a"
+          src="assets/swipe-arrow-a.svg"
+          alt=""
+          width="92"
+          height="36.82"
+          data-node-id="45:51"
+        />
+        <img
+          class="swipe-hint__arrow swipe-hint__arrow--b"
+          src="assets/swipe-arrow-b.svg"
+          alt=""
+          width="92"
+          height="36.82"
+          data-node-id="45:52"
+        />
+        <p data-node-id="45:50">좌우로 넘겨주세요</p>
+      </div>
 
       <nav class="actions" data-node-id="33:53" aria-label="안내">
         <a href="https://www.kclf.org/campaign/good" data-node-id="33:54">
@@ -260,6 +285,13 @@
         <strong>후원자님의 곁에도 오래 머물기를 바랍니다.</strong><br />
         새해 복 많이 받으세요!
       </p>
+      <a class="closing__note-group" href="https://www.kclf.org/campaign/good">
+        <div class="closing__note" data-node-id="43:24">
+          <img src="assets/closing-note.png" alt="" width="2172" height="724" />
+        </div>
+        <p class="closing__note-kicker" data-node-id="43:7">소아암 어린이와 함께하는 연말 캠페인</p>
+        <p class="closing__note-title" data-node-id="43:8">‘수고했어, 올해도!’</p>
+      </a>
       <img class="closing__star closing__star--a" src="assets/closing-star-a-new.svg" alt="" width="52.6" height="58.6" data-node-id="33:803" />
       <img class="closing__star closing__star--b" src="assets/closing-star-b-new.svg" alt="" width="52.6" height="58.6" data-node-id="33:804" />
       <img class="closing__spark closing__spark--lg" src="assets/closing-spark-a-new.svg" alt="" width="33.9139" height="33.4137" data-node-id="33:805" />
@@ -307,6 +339,7 @@
       </nav>
     </section>
     </div>
+    <nav class="pager" aria-label="카드 위치"></nav>
     <audio id="card-music" src="bgm.mp3" preload="none" loop></audio>
     <button type="button" id="music-button" aria-pressed="false" aria-label="음악 켜기">
       <svg class="music-icon music-icon--off" viewBox="0 0 64 64" aria-hidden="true">
@@ -511,6 +544,54 @@
 
         deck.addEventListener("pointerup", finishDrag);
         deck.addEventListener("pointercancel", finishDrag);
+
+        const swipeHint = document.querySelector(".swipe-hint");
+
+        if (swipeHint) {
+          let hintGone = false;
+
+          const hideSwipeHint = () => {
+            if (hintGone) return;
+            hintGone = true;
+            swipeHint.classList.add("is-gone");
+            swipeHint.addEventListener("transitionend", () => swipeHint.remove(), { once: true });
+          };
+
+          deck.addEventListener("scroll", () => {
+            if (deck.scrollLeft > 12) hideSwipeHint();
+          }, { passive: true });
+        }
+
+        const pager = document.querySelector(".pager");
+        const cards = [...deck.querySelectorAll(".card")];
+
+        if (pager && cards.length) {
+          const dots = cards.map((card, index) => {
+            const dot = document.createElement("button");
+            const name = card.getAttribute("aria-label") || "표지";
+            dot.type = "button";
+            dot.setAttribute("aria-label", `${index + 1}번째 카드, ${name}`);
+            dot.addEventListener("click", () => {
+              cancelSettle();
+              settle(index * slideWidth());
+            });
+            pager.append(dot);
+            return dot;
+          });
+
+          const setPager = () => {
+            const width = slideWidth();
+            const index = width ? Math.round(deck.scrollLeft / width) : 0;
+            dots.forEach((dot, dotIndex) => {
+              if (dotIndex === index) dot.setAttribute("aria-current", "true");
+              else dot.removeAttribute("aria-current");
+            });
+          };
+
+          deck.addEventListener("scroll", setPager, { passive: true });
+          window.addEventListener("resize", setPager);
+          setPager();
+        }
       }
 
       const music = document.querySelector("#card-music");
